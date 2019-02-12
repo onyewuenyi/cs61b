@@ -81,7 +81,7 @@ public class PathHarness extends JPanel implements Runnable {
                             - north.get(i).getCurrentPoint().getX();
             double dy = -east.get(i).getCurrentPoint().getY()
                             + north.get(i).getCurrentPoint().getY();
-
+            // call the Path instance method iterate that I defined 
             pNorth.get(i).iterate(dy * WEIGHT, dx * WEIGHT);
             pSouth.get(i).iterate(-dy * WEIGHT, -dx * WEIGHT);
             pEast.get(i).iterate(-dx * WEIGHT, dy * WEIGHT);
