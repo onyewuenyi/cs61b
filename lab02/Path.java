@@ -7,7 +7,7 @@ public class Path {
 
   public Path(double x, double y) {
     // curr = createRandomPoint();
-    curr = new  Point(0, 0);
+    curr = new  Point(1.0, 1.0);
     next = new Point(x, y);
   }
 
@@ -30,34 +30,22 @@ public class Path {
   movement defined by dx and dy
   */
   public void iterate(double dx, double dy) {
-    Point currAddr = this.curr ;
-    Point nextAddr = this.next;
     // set curr to next
-    // this.curr == Point addr
-    // this.curr = new Point(this.next);
-    this.curr = new Point(this.next);
+    this.curr = this.next;
 
-    // this.next == Point addr
     // updates the position of next to be the curr with movement defined by dx and dy
     this.next = new Point(dx, dy);
   }
 
   public static void main(String[] args) {
     Path path0 = new Path(5, 3);
-    Path path1 = new Path(11, 4);
 
     System.out.println("path0:\n" + "curr = " + path0.curr.toString() + "\n" + "next = " + path0.next.toString());
 
     path0.iterate(25, 9);
 
+    System.out.println("Expectations: curr(5.0, 3.0) and next(25.0, 9.0)");
     System.out.println("path0:\n" + "curr = " + path0.curr.toString() + "\n" + "next = " + path0.next.toString());
-    path0.iterate(25, 9);
-    path0.iterate(100, 92);
-    path0.iterate(124, 110);
-    System.out.println("path0:\n" + "curr = " + path0.curr.toString() + "\n" + "next = " + path0.next.toString());
-
-
-
 
   }
 }
