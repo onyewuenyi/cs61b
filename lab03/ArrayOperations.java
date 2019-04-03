@@ -6,9 +6,19 @@ public class ArrayOperations {
      */
     public static void delete(int[] values, int pos) {
         if (pos < 0 || pos >= values.length) {
-            return;
+          System.out.println("Error: pos out of range");
+          return;
         }
         // TODO: YOUR CODE HERE
+        int lastIndex = values.length - 1;
+        int sucessorPtr = pos + 1;
+
+        while(sucessorPtr <= lastIndex) {
+          values[sucessorPtr - 1] = values[sucessorPtr];
+          sucessorPtr++;
+        }
+        values[lastIndex] = 0;
+
     }
 
     /**
@@ -17,9 +27,17 @@ public class ArrayOperations {
      * argument array is lost.
      */
     public static void insert(int[] values, int pos, int newInt) {
-        if (pos < 0 || pos >= values.length) {
+        if (pos < 0 || pos >= values.length ) {
+            System.out.println("Error: pos out of range");
             return;
         }
         // TODO: YOUR CODE HERE
+        int lastIndex = values.length - 1;
+        int tailPtr = lastIndex;
+        while(tailPtr > pos) {
+          values[tailPtr] = values[tailPtr - 1];
+          tailPtr--;
+        }
+        values[pos] = newInt;
     }
 }
