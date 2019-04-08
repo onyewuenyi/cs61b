@@ -46,6 +46,12 @@ public class IntList {
       return ptr;
     }
 
+    public IntList recurGetRef(int i) {
+      if(i == 0) return this;
+      return next.recurGetRef(i - 1);
+    }
+
+
     /** Add an integer with the the value V at index I */
     public void add(int index, int value) {
       // assume add is always called on the head
@@ -63,18 +69,74 @@ public class IntList {
       return ptr.value;
     }
 
+    public int recurGet(int i) {
+      if(i == 0) return value;
+      return next.recurGet(i - 1);
+    }
 
+    public String toString() {
+      if(next == null) return String.valueOf(value);
+      return value + "," + next.toString();
+    }
+
+    public boolean recurEquals(IntList l) {
+      // input val
+      if(this.size() != l.size()) return false;
+      if((this == null) && (l == null)) return value == l.value; //basecase
+      return value == l.value && next.equals(l.next); // recur case
+    }
+
+    public boolean iterEquals(IntList l) {
+      boolean equal = true;
+      IntList ptr = this;
+      while(ptr != null) {
+        equal = equal && (ptr.value == l.value);
+        ptr = ptr.next;
+        l = l.next;
+      }
+      return equal;
+    }
 
     public static void main(String[] args) {
         IntList L = new IntList(5,
                         new IntList(10,
                             new IntList(15, null)));
-        System.out.println(L.iterativeSize());
-        System.out.println(L.size());
-        System.out.println(L.get(2));
-        L.add(2, 22);
-        System.out.println(L.get(2));
-        System.out.println(L.get(3));
+        IntList L1 = new IntList(5,
+                        new IntList(10,
+                            new IntList(15, null)));
+        IntList L2 = new IntList(5,
+                        new IntList(10,
+                            new IntList(122, null)));
+
+
+
+        // recurGet test
+        if(L.recurGet(1) != 10) {
+          System.out.println("Expect 10 but got " + L.recurGet(1));
+        }
+        else {
+          System.out.println("Passed: recurGet");
+        }
+
+
+        // recurGetRef test
+        IntList l = L.recurGetRef(2);
+        if(l.value != 15) {
+          System.out.println("Expect 15 but got " + l.value);
+        }
+        else {
+          System.out.println("Passed: recurGetRef");
+        }
+
+        // toString
+        System.out.println("Testing toString");
+        System.out.println(L);
+
+        System.out.println("equals test = " + L.equals(L1));
+        System.out.println("equals test = " + L.recurEquals(L1));
+
+
+
 
 
     }
