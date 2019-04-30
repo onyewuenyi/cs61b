@@ -97,6 +97,20 @@ public class IntList {
       return equal;
     }
 
+    public static void mystery(IntList L) {
+      /** Pass through each even index in the list */
+         while (L != null && L.next != null) {
+            System.out.println(L.value);
+             IntList nodePrt = L.next;
+             IntList successorNodePtr = L.next.next;
+             // inc ptr in list
+             nodePrt = successorNodePtr;
+             L = nodePrt;
+         }
+         System.out.println(L.value);
+
+     }
+
     public static void main(String[] args) {
         IntList L = new IntList(5,
                         new IntList(10,
@@ -107,6 +121,10 @@ public class IntList {
         IntList L2 = new IntList(5,
                         new IntList(10,
                             new IntList(122, null)));
+        IntList L3 = new IntList(5,
+                        new IntList(10,
+                            new IntList(122, new IntList(55, new IntList(88, null)
+                            ))));
 
 
 
@@ -134,6 +152,8 @@ public class IntList {
 
         System.out.println("equals test = " + L.equals(L1));
         System.out.println("equals test = " + L.recurEquals(L1));
+
+        IntList.mystery(L3);
 
 
 

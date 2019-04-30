@@ -18,6 +18,7 @@ public class Point {
   public String toString() {
     return "(" + x + "," + y + ")";
   }
+
   public boolean equals(Point p0) {
     return (this.x == p0.x) && (this.y == p0.y);
   }
@@ -30,7 +31,7 @@ public class Point {
     Point p0 = new Point(33,5);
     Point p1 = new Point(33,5);
     Point p2 = new Point(44, 2);
-    Point p3 = new Point();
+    Point p3 = new Point();”
 
     System.out.println(p0);
     System.out.println(p1.equals(p1));
