@@ -19,5 +19,11 @@ public class Alist<T> implements MyList<T> {
     }
 
     @Override
-    public T getLast() { return list[size-1]; }
+    public T getLast() { return list[size]; }
+
+
+    @Override
+    public void printLast() {
+        System.out.println("Alist = " + getLast());
+    }
 }

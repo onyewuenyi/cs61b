@@ -12,11 +12,15 @@ public class MyListTest {
 
     @Test
     public void testDllist() {
-        return;
+        Dlist<String> names = new Dlist<String>();
+        names.addLast("Charles");
+        assertEquals("Charles", names.getLast());
     }
 
     @Test
     public void testAlist() {
-        return;
+        Alist<String> names = new Alist<String>();
+        names.addLast("Charles");
+        assertEquals("Charles", names.getLast());
     }
 }

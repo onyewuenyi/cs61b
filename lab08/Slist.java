@@ -36,4 +36,9 @@ public class Slist<T> implements MyList<T> {
         return last.item;
     }
 
+    @Override
+    public void printLast() {
+        System.out.println("Slist = " + getLast());
+    }
+
 }
