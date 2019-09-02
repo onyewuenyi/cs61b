@@ -27,9 +27,14 @@ public class AList<Item> {
         return size;
     }
 
-    /** Returns if the collection contains k. */
+    /** Returns True or False if the collection contains k.
+     * 1. Traverse list
+     * */
     public boolean contains(Item x) {
         // TODO
+        for (int i = 0; i < size; i++) {
+            if (x.equals(get(i))) return true;
+        }
         return false;
     }
 
@@ -45,14 +50,22 @@ public class AList<Item> {
 
     /** Adds x to the list at the specified index. */
     public void add(int index, Item x) {
+        // input val
+
+        // Alist range: 0 to size - 1
         if (index < 0 || index > size) {
             return;
-        } else if (size == items.length) {
+        }
+        // trigger resize if Alist is full
+        else if (size == items.length) {
             resize(size * 2);
         }
 
         // FIXME
-        for (int i = index + 1; i <= size; i += 1) {
+        // shift the elements starting from i right to make room to add x to index i
+        // the bug is right here: we are writing over the value at i
+        // the fix is to start from the tail with the shift right op
+        for (int i = size; i > index; i -= 1) {
             items[i] = items[i - 1];
         }
         items[index] = x;
@@ -80,5 +93,13 @@ public class AList<Item> {
     /** Removes the first instance of the item from this list. */
     public void remove(Item x) {
         // TODO
+        for (int i = 0; i < size; i++) {
+            if (x.equals(items[i])) {
+                items[i] = null;
+                size -= 1;
+                return;
+            }
+        }
+        return;
     }
 }

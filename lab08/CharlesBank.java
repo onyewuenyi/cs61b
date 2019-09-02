@@ -25,21 +25,22 @@ public class CharlesBank implements Bank {
   }
 
   public CharlesBank(double amount) {
-    partialAmount = amount / 4;
-    newAmount = amount - partialAmount;
+    double partialAmount = amount / 4;
+    double newAmount = amount - partialAmount;
     total = new Total(newAmount, partialAmount);
   }
 
 
   // CharlesBank implemention of  interface methods
   @Override
-  public getTotal() return total.checking + total.savings;
+  public double getTotal() { return total.checking + total.savings; }
 
   @Override
   public double withdraw(double amount) {
     double curr = getTotal();
     total.checking -= amount;
     System.out.println("Balance = " + curr + "\nNew Balance = " + getTotal() );
+    return getTotal();
   }
 
   @Override

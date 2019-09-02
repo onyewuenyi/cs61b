@@ -1,11 +1,11 @@
-public class SpeedTestAList {
+public class SpeedTestDLList {
     public static void main(String[] args) {
-        int N = 100000;
-        MyAList L = new MyAList();
+        DLList<Integer> L = new DLList<>();
         int i = 0;
-        while (i < N) {
+        while (i < 100000) {
             L.addLast(i);
             i = i + 1;
         }
     }
 }
+

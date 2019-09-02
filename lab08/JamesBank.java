@@ -33,16 +33,16 @@ public class JamesBank implements Bank {
   }
 
   public JamesBank(double amount) {
-    double retirement = amount / 5;
-    double checking = amount / 2.5;
-    double savings = amount / 5;
-    double HSA = amount / 10;
+    double retirement = amount / 4;
+    double checking = amount / 4;
+    double savings = amount / 4;
+    double HSA = amount / 4;
     total = new Total(retirement,checking, savings, HSA);
   }
 
   // JamesBank implemention of  interface methods
   @Override
-  public getTotal() return total.retirement + total.checking + total.savings + total.HSA;
+  public double getTotal() { return total.retirement + total.checking + total.savings + total.HSA; }
 
   // I have used these twice in each Bank subclass. This is a good piece of code
   // to generalize, but how exactly
@@ -55,6 +55,7 @@ public class JamesBank implements Bank {
     double curr = getTotal();
     total.checking -= amount;
     System.out.println("Balance = " + curr + "\nNew Balance = " + getTotal() );
+    return getTotal();
   }
   @Override
   public void deposit(double amount) {
